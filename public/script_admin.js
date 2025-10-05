@@ -131,13 +131,39 @@ function ensureDialogCloseButtons(dialog) {
   });
 }
 
+function extractUrlValues(value) {
+  if (!value) {
+    return [];
+  }
+  return String(value)
+    .split(/[\s,;]+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+function normalizeUrlInput(container, input) {
+  const urls = extractUrlValues(input.value);
+  if (urls.length <= 1) {
+    input.value = urls[0] || '';
+    return;
+  }
+  input.value = urls.shift();
+  urls.forEach((url) => createUrlRow(container, url));
+}
+
 function createUrlRow(container, value = '') {
   const row = document.createElement('div');
   row.className = 'dynamic-row';
   const input = document.createElement('input');
   input.type = 'url';
   input.placeholder = 'https://beispiel.de/bild.jpg';
-  input.value = value;
+  const urls = extractUrlValues(value);
+  input.value = urls.shift() || '';
+  input.addEventListener('blur', () => normalizeUrlInput(container, input));
+  input.addEventListener('paste', () => {
+    setTimeout(() => normalizeUrlInput(container, input), 0);
+  });
+  urls.forEach((url) => createUrlRow(container, url));
   const removeBtn = document.createElement('button');
   removeBtn.type = 'button';
   removeBtn.className = 'btn btn--ghost';
@@ -148,9 +174,11 @@ function createUrlRow(container, value = '') {
 }
 
 function collectUrls(container) {
-  return Array.from(container.querySelectorAll('input[type="url"]'))
-    .map((input) => input.value.trim())
-    .filter(Boolean);
+  const urls = new Set();
+  container.querySelectorAll('input[type="url"]').forEach((input) => {
+    extractUrlValues(input.value).forEach((url) => urls.add(url));
+  });
+  return Array.from(urls);
 }
 
 function createDynamicRow(key = '', value = '') {

@@ -90,13 +90,39 @@ function createCustomRow(key = '', value = '') {
   customList.append(row);
 }
 
+function extractUrlValues(value) {
+  if (!value) {
+    return [];
+  }
+  return String(value)
+    .split(/[\s,;]+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
+function normalizeUrlInput(input) {
+  const urls = extractUrlValues(input.value);
+  if (urls.length <= 1) {
+    input.value = urls[0] || '';
+    return;
+  }
+  input.value = urls[0];
+  urls.slice(1).forEach((url) => createImageUrlRow(url));
+}
+
 function createImageUrlRow(value = '') {
   const row = document.createElement('div');
   row.className = 'dynamic-row';
   const input = document.createElement('input');
   input.type = 'url';
   input.placeholder = 'https://beispiel.de/bild.jpg';
-  input.value = value;
+  const urls = extractUrlValues(value);
+  input.value = urls.shift() || '';
+  input.addEventListener('blur', () => normalizeUrlInput(input));
+  input.addEventListener('paste', () => {
+    setTimeout(() => normalizeUrlInput(input), 0);
+  });
+  urls.forEach((url) => createImageUrlRow(url));
   const removeBtn = document.createElement('button');
   removeBtn.type = 'button';
   removeBtn.className = 'btn btn--ghost';
@@ -107,9 +133,11 @@ function createImageUrlRow(value = '') {
 }
 
 function collectImageUrls() {
-  return Array.from(imageUrlList.querySelectorAll('input[type="url"]'))
-    .map((input) => input.value.trim())
-    .filter(Boolean);
+  const urls = new Set();
+  imageUrlList.querySelectorAll('input[type="url"]').forEach((input) => {
+    extractUrlValues(input.value).forEach((url) => urls.add(url));
+  });
+  return Array.from(urls);
 }
 
 function collectCustomCategories() {

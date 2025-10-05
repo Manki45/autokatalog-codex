@@ -5,6 +5,7 @@
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
+    "postinstall": "node scripts/ensureUsers.js",
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
