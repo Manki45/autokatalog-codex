@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fahrzeug einreichen – Online Autokatalog</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="layout--light">
+    <main class="page page--form">
+      <header class="page-header">
+        <h1>Fahrzeug einreichen</h1>
+        <p>Teile dein Fahrzeug mit der Community – wir prüfen jede Einsendung sorgfältig.</p>
+        <a class="btn btn--ghost" href="/index.html">Zurück zum Katalog</a>
+      </header>
+
+      <form id="submit-form" class="card form" autocomplete="off">
+        <div class="form__group">
+          <label for="brand">Marke *</label>
+          <div class="form__inline">
+            <select id="brand" name="brand" required></select>
+            <button id="toggle-new-brand" class="btn btn--ghost" type="button">Neue Marke</button>
+          </div>
+          <input id="new-brand" name="newBrand" type="text" placeholder="Neue Marke" class="hidden" />
+        </div>
+
+        <div class="form__group">
+          <label for="model">Modell *</label>
+          <input id="model" name="model" type="text" placeholder="z. B. XC60 Recharge" required />
+        </div>
+
+        <div class="form__group form__group--split">
+          <label>
+            <span>Baujahr *</span>
+            <input name="year" type="number" min="1886" max="2100" required />
+          </label>
+          <label>
+            <span>Leistung (PS)</span>
+            <input name="powerPS" type="number" min="0" />
+          </label>
+        </div>
+
+        <div class="form__group form__group--split">
+          <label>
+            <span>0–100 km/h (s)</span>
+            <input name="acceleration_0_100" type="number" min="0" step="0.1" />
+          </label>
+          <label>
+            <span>Höchstgeschwindigkeit (km/h)</span>
+            <input name="topSpeed" type="number" min="0" />
+          </label>
+        </div>
+
+        <div class="form__group">
+          <label for="consumption">Verbrauch</label>
+          <input id="consumption" name="consumption" type="text" placeholder="z. B. 6,5 l/100 km" />
+        </div>
+
+        <fieldset class="form__group form__group--chips">
+          <legend>Karosserie-Typen *</legend>
+          <div id="bodytype-options" class="chip-list"></div>
+        </fieldset>
+
+        <div class="form__group">
+          <label>Eigene Kategorien</label>
+          <div id="custom-category-list" class="dynamic-list"></div>
+          <button class="btn btn--ghost" id="add-custom-category" type="button">Weitere Kategorie</button>
+        </div>
+
+        <div class="form__group">
+          <label for="images">Bilder hochladen</label>
+          <input id="images" name="images" type="file" accept="image/jpeg,image/png" multiple />
+          <p class="form__hint">Maximal 12 Bilder, jeweils 8&nbsp;MB. JPEG oder PNG.</p>
+          <div id="image-preview" class="image-preview"></div>
+        </div>
+
+        <div class="form__group">
+          <header class="form__subheader">
+            <h4>Bild-Links</h4>
+            <button class="btn btn--ghost" id="add-image-url" type="button">Link hinzufügen</button>
+          </header>
+          <p class="form__hint">Optional: Externe Bild-URLs (https://...) einfügen.</p>
+          <div id="image-url-list" class="dynamic-list"></div>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit">Einreichen</button>
+          <p id="submit-message" role="status" class="form__message"></p>
+        </div>
+      </form>
+    </main>
+
+    <script type="module" src="/script_submit.js"></script>
+  </body>
+</html>

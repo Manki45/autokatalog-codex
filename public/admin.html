@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Bereich – Online Autokatalog</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="layout--admin">
+    <main class="page page--admin">
+      <section id="login-panel" class="admin-block admin-block--login">
+        <h1>Admin Login</h1>
+        <p>Bitte melden Sie sich mit Ihren Zugangsdaten an.</p>
+        <form id="login-form" class="form form--inline" autocomplete="off">
+          <label>
+            <span>Benutzername</span>
+            <input name="username" type="text" required />
+          </label>
+          <label>
+            <span>Passwort</span>
+            <input name="password" type="password" required />
+          </label>
+          <button class="btn btn--primary" type="submit">Anmelden</button>
+          <p id="login-message" class="form__message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="admin-panel" class="admin-block hidden">
+        <header class="admin-header">
+          <div>
+            <h1>Verwaltung</h1>
+            <p id="admin-user"></p>
+          </div>
+          <div class="admin-header__actions">
+            <button class="btn btn--ghost" id="logout-btn" type="button">Abmelden</button>
+            <a class="btn btn--ghost" href="/index.html">Zur Startseite</a>
+          </div>
+        </header>
+
+        <nav class="admin-nav" aria-label="Admin Navigation">
+          <button class="admin-nav__item is-active" data-section="cars">Fahrzeuge</button>
+          <button class="admin-nav__item" data-section="pending">Einreichungen</button>
+          <button class="admin-nav__item" data-section="users">Benutzer</button>
+          <button class="admin-nav__item" data-section="meta">Marken &amp; Kategorien</button>
+        </nav>
+
+        <section id="section-cars" class="admin-section">
+          <header class="admin-section__header">
+            <h2>Fahrzeuge</h2>
+            <button class="btn btn--primary" id="car-create" type="button">Fahrzeug hinzufügen</button>
+          </header>
+          <div id="car-list" class="admin-list"></div>
+          <dialog id="car-dialog" class="modal-form">
+            <form method="dialog" class="form form--modal" id="car-form">
+              <header class="form__header">
+                <h3 id="car-form-title">Fahrzeug</h3>
+                <button class="modal__close" type="button" data-close-dialog aria-label="Schließen">×</button>
+              </header>
+
+              <div class="form__grid">
+                <label>
+                  <span>Marke *</span>
+                  <select name="brand" required id="car-brand"></select>
+                </label>
+                <label>
+                  <span>Modell *</span>
+                  <input name="model" type="text" required />
+                </label>
+                <label>
+                  <span>Baujahr *</span>
+                  <input name="year" type="number" min="1886" required />
+                </label>
+                <label>
+                  <span>Leistung (PS)</span>
+                  <input name="powerPS" type="number" min="0" />
+                </label>
+                <label>
+                  <span>0–100 km/h (s)</span>
+                  <input name="acceleration_0_100" type="number" step="0.1" min="0" />
+                </label>
+                <label>
+                  <span>Höchstgeschwindigkeit</span>
+                  <input name="topSpeed" type="number" min="0" />
+                </label>
+                <label class="form__full">
+                  <span>Verbrauch</span>
+                  <input name="consumption" type="text" />
+                </label>
+              </div>
+
+              <fieldset>
+                <legend>Karosserie-Typen *</legend>
+                <div id="car-bodytypes" class="chip-list"></div>
+              </fieldset>
+
+              <section class="form__group">
+                <header class="form__subheader">
+                  <h4>Eigene Kategorien</h4>
+                  <button class="btn btn--ghost" id="car-add-custom" type="button">Neue Zeile</button>
+                </header>
+                <div id="car-custom-list" class="dynamic-list"></div>
+              </section>
+
+              <section class="form__group">
+                <label for="car-images">Weitere Bilder</label>
+                <input id="car-images" name="images" type="file" accept="image/jpeg,image/png" multiple />
+                <p class="form__hint">Bereits hochgeladene Bilder können unten entfernt werden.</p>
+                <div id="car-existing-images" class="image-preview image-preview--small"></div>
+              </section>
+
+              <section class="form__group">
+                <header class="form__subheader">
+                  <h4>Bild-Links</h4>
+                  <button class="btn btn--ghost" id="car-add-url" type="button">Link hinzufügen</button>
+                </header>
+                <p class="form__hint">Optional: Externe URLs ergänzen. Bereits vorhandene Bilder bleiben erhalten, wenn sie nicht entfernt werden.</p>
+                <div id="car-url-list" class="dynamic-list"></div>
+              </section>
+
+              <footer class="form__actions">
+                <button class="btn btn--ghost" type="button" data-close-dialog>Abbrechen</button>
+                <button class="btn btn--primary" type="submit">Speichern</button>
+                <p class="form__message" id="car-form-message"></p>
+              </footer>
+            </form>
+          </dialog>
+        </section>
+
+        <section id="section-pending" class="admin-section hidden">
+          <header class="admin-section__header">
+            <h2>Einreichungen</h2>
+          </header>
+          <div id="pending-list" class="admin-list"></div>
+        </section>
+
+        <section id="section-users" class="admin-section hidden">
+          <header class="admin-section__header">
+            <h2>Benutzerverwaltung</h2>
+            <button class="btn btn--primary" id="user-create" type="button">Benutzer hinzufügen</button>
+          </header>
+          <div id="user-list" class="admin-list"></div>
+          <dialog id="user-dialog" class="modal-form">
+            <form method="dialog" class="form form--modal" id="user-form">
+              <header class="form__header">
+                <h3 id="user-form-title">Benutzer</h3>
+                <button class="modal__close" type="button" data-close-dialog aria-label="Schließen">×</button>
+              </header>
+              <label>
+                <span>Benutzername *</span>
+                <input name="username" type="text" required />
+              </label>
+              <label>
+                <span>Passwort <small>(mind. 6 Zeichen)</small></span>
+                <input name="password" type="password" />
+              </label>
+              <label>
+                <span>Rolle *</span>
+                <select name="role" required>
+                  <option value="editor">Editor</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </label>
+              <footer class="form__actions">
+                <button class="btn btn--ghost" type="button" data-close-dialog>Abbrechen</button>
+                <button class="btn btn--primary" type="submit">Speichern</button>
+                <p class="form__message" id="user-form-message"></p>
+              </footer>
+            </form>
+          </dialog>
+        </section>
+
+        <section id="section-meta" class="admin-section hidden">
+          <header class="admin-section__header">
+            <h2>Marken &amp; Kategorien</h2>
+          </header>
+          <div class="admin-meta">
+            <div class="admin-card">
+              <header>
+                <h3>Marken</h3>
+                <div class="admin-card__actions">
+                  <input id="brand-input" type="text" placeholder="Neue Marke" />
+                  <button class="btn btn--primary" id="brand-add" type="button">Hinzufügen</button>
+                </div>
+              </header>
+              <ul id="brand-management" class="tag-list"></ul>
+            </div>
+            <div class="admin-card">
+              <header>
+                <h3>Kategorien</h3>
+                <button class="btn btn--primary" id="category-add" type="button">Kategorie hinzufügen</button>
+              </header>
+              <div id="category-list-admin" class="admin-list admin-list--compact"></div>
+            </div>
+          </div>
+          <dialog id="category-dialog" class="modal-form">
+            <form method="dialog" class="form form--modal" id="category-form">
+              <header class="form__header">
+                <h3 id="category-form-title">Kategorie</h3>
+                <button class="modal__close" type="button" data-close-dialog aria-label="Schließen">×</button>
+              </header>
+              <label>
+                <span>Name *</span>
+                <input name="name" type="text" required />
+              </label>
+              <label>
+                <span>Icon-Pfad *</span>
+                <input name="icon" type="text" placeholder="/icons/suv.svg" required />
+              </label>
+              <footer class="form__actions">
+                <button class="btn btn--ghost" type="button" data-close-dialog>Abbrechen</button>
+                <button class="btn btn--primary" type="submit">Speichern</button>
+                <p class="form__message" id="category-form-message"></p>
+              </footer>
+            </form>
+          </dialog>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="/script_admin.js"></script>
+  </body>
+</html>

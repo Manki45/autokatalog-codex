@@ -1,0 +1,14 @@
+[
+  { "name": "SUV", "icon": "/icons/suv.svg" },
+  { "name": "Cabrio", "icon": "/icons/cabrio.svg" },
+  { "name": "Kombi", "icon": "/icons/kombi.svg" },
+  { "name": "Limousine", "icon": "/icons/limousine.svg" },
+  { "name": "Coupé", "icon": "/icons/coupe.svg" },
+  { "name": "Roadster", "icon": "/icons/roadster.svg" },
+  { "name": "Kleinwagen", "icon": "/icons/kleinwagen.svg" },
+  { "name": "Van", "icon": "/icons/van.svg" },
+  { "name": "Pickup", "icon": "/icons/pickup.svg" },
+  { "name": "Sportwagen", "icon": "/icons/sportwagen.svg" },
+  { "name": "Elektro", "icon": "/icons/elektro.svg" },
+  { "name": "Hybrid", "icon": "/icons/hybrid.svg" }
+]

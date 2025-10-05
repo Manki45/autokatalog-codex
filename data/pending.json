@@ -1,0 +1,55 @@
+[
+  {
+    "id": "b1a2f3c4-d5e6-4789-8abc-1234567890ab",
+    "brand": "Toyota",
+    "model": "GR Yaris",
+    "year": 2021,
+    "powerPS": 261,
+    "acceleration_0_100": 5.5,
+    "topSpeed": 230,
+    "consumption": "8,2 l/100 km",
+    "bodyTypes": [
+      "Kleinwagen",
+      "Sportwagen"
+    ],
+    "customCategories": {
+      "Antrieb": "Benzin",
+      "Antriebssystem": "GR-FOUR Allrad",
+      "Sitze": "4"
+    },
+    "images": [
+      "/uploads/b1a2f3c4-d5e6-4789-8abc-1234567890ab/gr-yaris-1.jpg",
+      "/uploads/b1a2f3c4-d5e6-4789-8abc-1234567890ab/gr-yaris-2.jpg"
+    ],
+    "createdAt": "2024-01-12T15:40:00.000Z",
+    "updatedAt": "2024-01-12T15:40:00.000Z",
+    "status": "pending"
+  },
+  {
+    "id": "c2b3a4d5-e6f7-4890-9bca-2345678901bc",
+    "brand": "Ford",
+    "model": "Mustang Mach-E GT",
+    "year": 2022,
+    "powerPS": 487,
+    "acceleration_0_100": 3.7,
+    "topSpeed": 200,
+    "consumption": "21,0 kWh/100 km",
+    "bodyTypes": [
+      "SUV",
+      "Elektro"
+    ],
+    "customCategories": {
+      "Antrieb": "Elektro",
+      "Reichweite": "500 km (WLTP)",
+      "Sitze": "5"
+    },
+    "images": [
+      "/uploads/c2b3a4d5-e6f7-4890-9bca-2345678901bc/mach-e-1.jpg",
+      "/uploads/c2b3a4d5-e6f7-4890-9bca-2345678901bc/mach-e-2.jpg",
+      "/uploads/c2b3a4d5-e6f7-4890-9bca-2345678901bc/mach-e-3.jpg"
+    ],
+    "createdAt": "2024-02-08T09:55:00.000Z",
+    "updatedAt": "2024-02-08T09:55:00.000Z",
+    "status": "pending"
+  }
+]

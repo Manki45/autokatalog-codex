@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Autokatalog</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Online Autokatalog</h1>
+        <p class="hero__subtitle">Für und von der Auto Community</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="/submit.html">Fahrzeug einreichen</a>
+          <a class="btn btn--ghost" href="/admin.html">Admin Login</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <section class="section section--categories">
+        <div class="section__header">
+          <h2>Kategorien</h2>
+          <button class="btn btn--small" id="show-all-btn" type="button">Alle ansehen</button>
+        </div>
+        <div class="categories" id="category-list"></div>
+      </section>
+
+      <section class="section section--filters">
+        <h2>Filter</h2>
+        <form id="filter-form" class="filters">
+          <label class="filter-field">
+            <span>Marke</span>
+            <select name="brand" id="filter-brand"></select>
+          </label>
+          <label class="filter-field">
+            <span>Karosserie</span>
+            <select name="bodyType" id="filter-body"></select>
+          </label>
+          <label class="filter-field">
+            <span>Baujahr von</span>
+            <input type="number" name="yearFrom" min="1886" id="filter-year-from" />
+          </label>
+          <label class="filter-field">
+            <span>Baujahr bis</span>
+            <input type="number" name="yearTo" min="1886" id="filter-year-to" />
+          </label>
+          <label class="filter-field filter-field--search">
+            <span>Modell finden</span>
+            <input type="search" name="q" id="filter-search" placeholder="z. B. Golf" />
+          </label>
+          <div class="filter-field filter-field--actions">
+            <button class="btn btn--primary" type="submit">Anwenden</button>
+            <button class="btn btn--ghost" id="reset-filters" type="button">Zurücksetzen</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="section section--random">
+        <div class="section__header">
+          <h2>Community Lieblinge</h2>
+          <p class="section__hint">Drei zufällige Fahrzeuge aus dem aktuellen Bestand</p>
+        </div>
+        <div class="random-grid" id="random-cars"></div>
+      </section>
+
+      <section class="section section--catalog">
+        <div class="section__header">
+          <h2>Alle Fahrzeuge</h2>
+          <p class="section__hint" id="catalog-count"></p>
+        </div>
+        <div class="catalog-grid" id="catalog-grid" data-empty-text="Keine Fahrzeuge gefunden."></div>
+      </section>
+    </main>
+
+    <aside class="compare-tray" id="compare-tray">
+      <div class="compare-tray__info">
+        <span id="compare-count">0 Fahrzeuge ausgewählt</span>
+      </div>
+      <div class="compare-tray__actions">
+        <button class="btn btn--ghost" id="compare-reset" type="button">Leeren</button>
+        <button class="btn btn--primary" id="compare-open" type="button">Vergleichen</button>
+      </div>
+    </aside>
+
+    <div class="overlay" id="image-overlay" aria-hidden="true">
+      <div class="overlay__backdrop" data-overlay-dismiss></div>
+      <div class="overlay__dialog" role="dialog" aria-modal="true">
+        <button class="overlay__close" type="button" data-overlay-dismiss aria-label="Schließen">×</button>
+        <div class="overlay__content">
+          <button class="overlay__nav overlay__nav--prev" type="button" aria-label="Vorheriges Bild"></button>
+          <figure class="overlay__figure">
+            <img src="" alt="Fahrzeugbild" id="overlay-image" />
+            <figcaption id="overlay-caption"></figcaption>
+          </figure>
+          <button class="overlay__nav overlay__nav--next" type="button" aria-label="Nächstes Bild"></button>
+        </div>
+        <footer class="overlay__footer">
+          <a class="btn btn--ghost" id="overlay-detail-link" href="#">Detailseite öffnen</a>
+        </footer>
+      </div>
+    </div>
+
+    <div class="modal" id="compare-modal" aria-hidden="true">
+      <div class="modal__backdrop" data-modal-dismiss></div>
+      <div class="modal__dialog" role="dialog" aria-modal="true">
+        <button class="modal__close" type="button" data-modal-dismiss aria-label="Schließen">×</button>
+        <div class="modal__content">
+          <h3>Fahrzeuge vergleichen</h3>
+          <div id="compare-table-wrapper" class="compare-table-wrapper"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>

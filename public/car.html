@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fahrzeugdetails – Online Autokatalog</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="layout--detail">
+    <main class="page page--detail">
+      <a class="back-link" href="/index.html">Zurück zum Katalog</a>
+      <section class="detail">
+        <div class="detail__carousel">
+          <button class="detail__nav detail__nav--prev" type="button" aria-label="Vorheriges Bild"></button>
+          <figure>
+            <img id="detail-image" src="" alt="Fahrzeugbild" />
+            <figcaption id="detail-caption"></figcaption>
+          </figure>
+          <button class="detail__nav detail__nav--next" type="button" aria-label="Nächstes Bild"></button>
+        </div>
+        <div class="detail__content">
+          <header>
+            <h1 id="detail-title"></h1>
+            <p id="detail-meta"></p>
+          </header>
+          <section>
+            <h2>Technische Daten</h2>
+            <dl id="detail-specs" class="spec-list"></dl>
+          </section>
+          <section>
+            <h2>Kategorien</h2>
+            <div id="detail-bodytypes" class="chip-list"></div>
+          </section>
+          <div class="detail__compare">
+            <label>
+              <input type="checkbox" id="detail-compare-toggle" /> Vergleichen
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module">
+      import { initCarDetail } from './catalog.js';
+      initCarDetail();
+    </script>
+  </body>
+</html>

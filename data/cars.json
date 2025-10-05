@@ -1,0 +1,175 @@
+[
+  {
+    "id": "c9f3d5c1-d4b7-4e5d-9f64-2a4d9dedc111",
+    "brand": "Audi",
+    "model": "e-tron Sportback 55 quattro",
+    "year": 2022,
+    "powerPS": 408,
+    "acceleration_0_100": 5.7,
+    "topSpeed": 200,
+    "consumption": "23,1 kWh/100 km",
+    "bodyTypes": [
+      "SUV",
+      "Elektro"
+    ],
+    "customCategories": {
+      "Antrieb": "Elektro",
+      "Reichweite": "446 km (WLTP)",
+      "Sitze": "5"
+    },
+    "images": [
+      "/uploads/c9f3d5c1-d4b7-4e5d-9f64-2a4d9dedc111/1759674157441-344.jpeg"
+    ],
+    "createdAt": "2023-10-12T09:30:00.000Z",
+    "updatedAt": "2025-10-05T14:22:37.453Z",
+    "status": "published"
+  },
+  {
+    "id": "7ec5e61f-6760-4e0f-a737-9f8a903f2db1",
+    "brand": "BMW",
+    "model": "M4 Competition",
+    "year": 2021,
+    "powerPS": 510,
+    "acceleration_0_100": 3.9,
+    "topSpeed": 290,
+    "consumption": "10,2 l/100 km",
+    "bodyTypes": [
+      "Coupé",
+      "Sportwagen"
+    ],
+    "customCategories": {
+      "Antrieb": "Benzin",
+      "Getriebe": "8-Gang M Steptronic",
+      "Sitze": "4"
+    },
+    "images": [
+      "/img/car-bmw-m4-1.jpg",
+      "/img/car-bmw-m4-2.jpg",
+      "/img/car-bmw-m4-3.jpg"
+    ],
+    "createdAt": "2023-04-05T14:45:00.000Z",
+    "updatedAt": "2024-02-01T10:05:00.000Z",
+    "status": "published"
+  },
+  {
+    "id": "f45f6a2d-d1e2-49f5-9b6c-2a73ac42ef78",
+    "brand": "Mercedes-Benz",
+    "model": "EQS 580 4MATIC",
+    "year": 2023,
+    "powerPS": 523,
+    "acceleration_0_100": 4.3,
+    "topSpeed": 210,
+    "consumption": "20,0 kWh/100 km",
+    "bodyTypes": [
+      "Limousine",
+      "Elektro"
+    ],
+    "customCategories": {
+      "Antrieb": "Elektro",
+      "Ladeleistung": "200 kW DC",
+      "Reichweite": "610 km (WLTP)"
+    },
+    "images": [
+      "/img/car-mercedes-eqs-1.jpg",
+      "/img/car-mercedes-eqs-2.jpg"
+    ],
+    "createdAt": "2023-11-18T08:12:00.000Z",
+    "updatedAt": "2024-03-09T16:42:00.000Z",
+    "status": "published"
+  },
+  {
+    "id": "0d9bc482-0211-4fda-b5ad-8ff8fb59d341",
+    "brand": "Porsche",
+    "model": "911 Carrera S",
+    "year": 2020,
+    "powerPS": 450,
+    "acceleration_0_100": 3.7,
+    "topSpeed": 308,
+    "consumption": "10,5 l/100 km",
+    "bodyTypes": [
+      "Coupé",
+      "Sportwagen"
+    ],
+    "customCategories": {
+      "Antrieb": "Benzin",
+      "Getriebe": "8-Gang PDK",
+      "Sitze": "4"
+    },
+    "images": [
+      "/img/car-porsche-911-1.jpg",
+      "/img/car-porsche-911-2.jpg"
+    ],
+    "createdAt": "2022-07-02T11:25:00.000Z",
+    "updatedAt": "2024-02-27T09:10:00.000Z",
+    "status": "published"
+  },
+  {
+    "id": "6f1e0320-e4f4-49a4-9ee7-4d3df1a80cf7",
+    "brand": "Volkswagen",
+    "model": "ID.4 Pro Performance",
+    "year": 2022,
+    "powerPS": 204,
+    "acceleration_0_100": 8.5,
+    "topSpeed": 160,
+    "consumption": "18,2 kWh/100 km",
+    "bodyTypes": [
+      "SUV",
+      "Elektro"
+    ],
+    "customCategories": {
+      "Antrieb": "Elektro",
+      "Reichweite": "517 km (WLTP)",
+      "Sitze": "5"
+    },
+    "images": [
+      "/img/car-vw-id4-1.jpg",
+      "/img/car-vw-id4-2.jpg"
+    ],
+    "createdAt": "2023-01-15T13:20:00.000Z",
+    "updatedAt": "2024-01-11T09:55:00.000Z",
+    "status": "published"
+  },
+  {
+    "id": "a84bd8b6-13fc-4f05-9f4a-b91e9d18b641",
+    "brand": "Tesla",
+    "model": "Model 3 Long Range",
+    "year": 2023,
+    "powerPS": 351,
+    "acceleration_0_100": 4.4,
+    "topSpeed": 233,
+    "consumption": "16,5 kWh/100 km",
+    "bodyTypes": [
+      "Limousine",
+      "Elektro"
+    ],
+    "customCategories": {
+      "Antrieb": "Elektro",
+      "Reichweite": "602 km (WLTP)",
+      "Autopilot": "Enhanced Autopilot"
+    },
+    "images": [
+      "/img/car-tesla-model3-1.jpg",
+      "/img/car-tesla-model3-2.jpg",
+      "/img/car-tesla-model3-3.jpg"
+    ],
+    "createdAt": "2023-05-22T10:00:00.000Z",
+    "updatedAt": "2024-04-03T17:05:00.000Z",
+    "status": "published"
+  },
+  {
+    "id": "c901982d-68c0-4d03-8f2c-29218f52aee5",
+    "brand": "Mercedes-Benz",
+    "model": "CLS63s",
+    "year": 2013,
+    "powerPS": 234,
+    "consumption": "9,2",
+    "bodyTypes": [
+      "Coupé"
+    ],
+    "customCategories": {},
+    "images": [],
+    "status": "published",
+    "createdAt": "2025-10-05T14:24:44.872Z",
+    "updatedAt": "2025-10-05T14:25:04.991Z"
+  }
+]
