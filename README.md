@@ -10,7 +10,7 @@ npm run dev
 ```
 
 * Entwicklungsserver: <http://localhost:3000>
-* Standard-Logins:
+* Standard-Logins: Die sind veraltet ihr opfer
   * `admin` / `admin123` (Rolle: admin)
   * `editor` / `editor123` (Rolle: editor)
   * `demo` / `demo123` (Rolle: editor)
